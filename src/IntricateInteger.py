@@ -1,16 +1,16 @@
+import math
+
+
 class IntricateInteger:
 
-    def __init__(self, obj):
+    def __init__(self, obj, n, alpha):
         self.object = obj
-
-    def __init__(self, obj, z, a):
-        self.object = obj
-        self.zrange = z
-        self.alpha = a
+        self.n = n
+        self.alpha = alpha
 
     # overwrite "print"
     def __str__(self):
-        return "<" + str(self.object) + ">"
+        return "<" + str(self.object) + " mod " + str(self.n) + " | " + str(self.alpha) + " >"
 
     # define "*"
     def __mul__(self, other):
@@ -19,10 +19,9 @@ class IntricateInteger:
                                 + self.object * other.object)
 
 
-
-
-a = IntricateInteger(3)
-print(a)
-b = IntricateInteger(5)
-print(b)
-print(a*b)
+x = IntricateInteger(3, 7, 2)
+print(x)
+y = IntricateInteger(5, 7, 2)
+print(y)
+print(x * x)
+print(x * y)
