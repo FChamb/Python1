@@ -12,7 +12,7 @@ def has_intricate_peculiar_property(n, alpha):
 def peculiar_test():
     valid = []
     for n in range(1, 51):
-        for a in range(1, n):
+        for a in range(0, n):
             if has_intricate_peculiar_property(n, a):
                 sublist = [n, a]
                 valid.append(sublist)
@@ -44,17 +44,42 @@ def has_commutative_intricate_multiplication(n, alpha):
 
 
 def commutative_test():
-    valid = []
+    nonvalid = []
     result = True
     for n in range(1, 51):
-        for a in range(1, n):
+        for a in range(0, n):
             if not has_commutative_intricate_multiplication(n, a):
                 result = False
                 sublist = [n, a]
-                valid.append(sublist)
-    for sublist in valid:
-        print(sublist[0], sublist[1])
+                nonvalid.append(sublist)
+    # for sublist in valid:
+        # print(sublist[0], sublist[1])
     return result
+
+
+def has_associative_intricate_multiplication(n, alpha):
+    for x in range(0, n):
+        for y in range(0, n):
+            for z in range(0, n):
+                a = IntricateInteger(x, n, alpha)
+                b = IntricateInteger(y, n, alpha)
+                c = IntricateInteger(z, n, alpha)
+                if (a * b) * c != a * (b * c):
+                    return False
+    return True
+
+
+def associative_test():
+    nonvalid = []
+    result = True
+    for n in range(1, 21):
+        for a in range(0, n):
+            if not has_associative_intricate_multiplication(n, a):
+                result = False
+                sublist = [n, a]
+                nonvalid.append(sublist)
+    return result
+
 
 
 class IntricateInteger:
@@ -99,3 +124,5 @@ print("Has peculiar 1: ", has_intricate_peculiar_property(10, 3))
 print("Has peculiar all: ", peculiar_test())
 # has_commutative_intricate_multiplication(20, 10)
 print("Has commutative all: ", commutative_test())
+print("Has associative 1: ", has_intricate_peculiar_property(10, 3))
+print("Has associative all: ", associative_test())
