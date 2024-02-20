@@ -9,19 +9,6 @@ def has_intricate_peculiar_property(n, alpha):
     return True
 
 
-def peculiar_test():
-    valid = []
-    for n in range(1, 51):
-        for a in range(0, n):
-            if has_intricate_peculiar_property(n, a):
-                sublist = [n, a]
-                valid.append(sublist)
-    for sublist in valid:
-        if sublist[1] != (sublist[0] - 1):
-            return False
-    return True
-
-
 def has_commutative_intricate_multiplication(n, alpha):
     for x in range(0, n):
         for y in range(0, n):
@@ -30,20 +17,6 @@ def has_commutative_intricate_multiplication(n, alpha):
             if (a * b).object != (b * a).object:
                 return False
     return True
-
-
-def commutative_test():
-    nonvalid = []
-    result = True
-    for n in range(1, 51):
-        for a in range(0, n):
-            if not has_commutative_intricate_multiplication(n, a):
-                result = False
-                sublist = [n, a]
-                nonvalid.append(sublist)
-    for sublist in nonvalid:
-        print(sublist[0], sublist[1])
-    return result
 
 
 def has_associative_intricate_multiplication(n, alpha):
@@ -58,21 +31,6 @@ def has_associative_intricate_multiplication(n, alpha):
     return True
 
 
-def associative_test():
-    valid = []
-    result = True
-    for n in range(1, 21):
-        for a in range(0, n):
-            if has_associative_intricate_multiplication(n, a):
-                sublist = [n, a]
-                valid.append(sublist)
-            else:
-                result = False
-    for sublist in valid:
-        print(sublist[0], sublist[1])
-    return result
-
-
 def intricate_roots_of_one(n, alpha):
     valid = []
     for x in range(0, n):
@@ -80,19 +38,6 @@ def intricate_roots_of_one(n, alpha):
         if (a * a).object == 1:
             valid.append(x)
     return valid
-
-
-def roots_test():
-    valid = []
-    for n in range(1, 26):
-        for a in range(0, n):
-            valid.append(len(intricate_roots_of_one(n, a)))
-    maximum = max(valid)
-    finallist = []
-    for i in range(maximum + 1):
-        sublist = [i, valid.count(i)]
-        finallist.append(sublist)
-    return finallist
 
 
 class IntricateInteger:
@@ -127,6 +72,7 @@ class IntricateInteger:
             raise Exception("Incompatible intricate integers!")
 
 
+"""
 x = IntricateInteger(3, 7, 2)
 print(x)
 y = IntricateInteger(5, 7, 2)
@@ -141,3 +87,4 @@ print("Has associative 1: ", has_intricate_peculiar_property(10, 3))
 print("Has associative all: ", associative_test())
 print("Has roots 1: ")
 print(roots_test())
+"""
