@@ -52,8 +52,8 @@ def commutative_test():
                 result = False
                 sublist = [n, a]
                 nonvalid.append(sublist)
-    # for sublist in valid:
-        # print(sublist[0], sublist[1])
+    # for sublist in nonvalid:
+    # print(sublist[0], sublist[1])
     return result
 
 
@@ -78,8 +78,9 @@ def associative_test():
                 result = False
                 sublist = [n, a]
                 nonvalid.append(sublist)
+    for sublist in nonvalid:
+        print(sublist[0], sublist[1])
     return result
-
 
 
 class IntricateInteger:
@@ -122,7 +123,7 @@ print(x * x)
 print(x * y)
 print("Has peculiar 1: ", has_intricate_peculiar_property(10, 3))
 print("Has peculiar all: ", peculiar_test())
-# has_commutative_intricate_multiplication(20, 10)
+has_commutative_intricate_multiplication(20, 10)
 print("Has commutative all: ", commutative_test())
 print("Has associative 1: ", has_intricate_peculiar_property(10, 3))
 print("Has associative all: ", associative_test())
