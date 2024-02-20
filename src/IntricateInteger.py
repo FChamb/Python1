@@ -1,6 +1,12 @@
 import math
 
-
+"""
+Returns a boolean indicating whether (x * x) = x
+for a given (n, alpha). If so the Intricate Peculiar
+Property holds true for all x in Zn.
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
 def has_intricate_peculiar_property(n, alpha):
     for x in range(0, n):
         a = IntricateInteger(x, n, alpha)
@@ -9,6 +15,13 @@ def has_intricate_peculiar_property(n, alpha):
     return True
 
 
+"""
+Returns a boolean indicating whether (x * y) = (y * x)
+for a given (n, alpha). If so the Commutative Intricate
+Multiplication holds true for all x in Zn.
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
 def has_commutative_intricate_multiplication(n, alpha):
     for x in range(0, n):
         for y in range(0, n):
@@ -19,6 +32,12 @@ def has_commutative_intricate_multiplication(n, alpha):
     return True
 
 
+"""
+Returns a list of all x in Zn for which (x * y) * z = x * (y * z)
+for a given (n, alpha).
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
 def has_associative_intricate_multiplication(n, alpha):
     for x in range(0, n):
         for y in range(0, n):
@@ -31,6 +50,12 @@ def has_associative_intricate_multiplication(n, alpha):
     return True
 
 
+"""
+Returns a list of all x in Zn for which (x * x) = 1
+for a given (n, alpha).
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
 def intricate_roots_of_one(n, alpha):
     valid = []
     for x in range(0, n):
@@ -41,7 +66,15 @@ def intricate_roots_of_one(n, alpha):
 
 
 class IntricateInteger:
-
+    """
+    Constructor method for a new IntricateInteger object.
+    Uses conditional statements to assure that the provided
+    values are valid with the specification given
+    constraints.
+    obj - the object or value of the IntricateInteger
+    n - the modulus of the IntricateInteger
+    alpha - the multiplier of the IntricateInteger
+    """
     def __init__(self, obj, n, alpha):
         if obj < 0:
             raise Exception("Value must be positive!")
@@ -57,11 +90,18 @@ class IntricateInteger:
         self.n = n
         self.alpha = alpha
 
-    # overwrite "print"
+    """
+    Returns a string value of the IntricateInteger object.
+    """
     def __str__(self):
         return "<" + str(self.object) + " mod " + str(self.n) + " | " + str(self.alpha) + " >"
 
-    # define "*"
+    """
+    Multiplication method for the IntricateInteger object.
+    Only returns a value if the n and alpha values of the
+    two provided IntricateInteger objects are equal.
+    other - the other IntricateInteger object to be multiplied
+    """
     def __mul__(self, other):
         if self.n == other.n and self.alpha == other.alpha:
             return IntricateInteger((self.object
@@ -70,21 +110,3 @@ class IntricateInteger:
                                     % self.n, self.n, self.alpha)
         else:
             raise Exception("Incompatible intricate integers!")
-
-
-"""
-x = IntricateInteger(3, 7, 2)
-print(x)
-y = IntricateInteger(5, 7, 2)
-print(y)
-print(x * x)
-print(x * y)
-print("Has peculiar 1: ", has_intricate_peculiar_property(10, 3))
-print("Has peculiar all: ", peculiar_test())
-print("Has commutative 1: ", has_commutative_intricate_multiplication(20, 10))
-print("Has commutative all: ", commutative_test())
-print("Has associative 1: ", has_intricate_peculiar_property(10, 3))
-print("Has associative all: ", associative_test())
-print("Has roots 1: ")
-print(roots_test())
-"""

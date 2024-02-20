@@ -142,6 +142,16 @@ class Testing(unittest.TestCase):
         print("Testing Associative Multiplication: ")
         self.assertFalse(associative_test())
 
+    # Testing IntricateIntegersIterator
+    def test_IntricateIntegers(self):
+        print("Testing Intricate Integers Iterator: ")
+        out = []
+        for x in IntricateIntegersIterator(IntricateIntegers(3, 2)):
+            out.append(str(x))
+        print(str(out))
+        valid = ["<0 mod 3 | 2 >", "<1 mod 3 | 2 >", "<2 mod 3 | 2 >"]
+        self.assertTrue(out, valid)
+
     """
     Hard Additional Requirements
     """
