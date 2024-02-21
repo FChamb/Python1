@@ -4,6 +4,10 @@ import unittest
 import coverage
 
 
+"""
+Returns a boolean indicating whether has_intricate_peculiar_property
+holds for all values of 1 <= n <= 50 and 0 <= a < n in a = n -1.
+"""
 def peculiar_test():
     valid = []
     for n in range(1, 51):
@@ -17,6 +21,11 @@ def peculiar_test():
     return True
 
 
+"""
+Returns a boolean indicating whether has_commutative_intricate_multiplication
+holds for all values of 1 <= n <= 50 and 0 <= a < n. Prints any values where
+the commutative intricate multiplication does not hold.
+"""
 def commutative_test():
     nonvalid = []
     result = True
@@ -31,6 +40,11 @@ def commutative_test():
     return result
 
 
+"""
+Returns a boolean indicating whether has_associative_intricate_multiplication
+holds for all values of 1 <= n <= 20 and 0 <= a < n. Prints any values where
+the associative intricate multiplication does hold.
+"""
 def associative_test():
     valid = []
     result = True
@@ -46,6 +60,11 @@ def associative_test():
     return result
 
 
+"""
+Returns a list indicating which values of intricate_roots_of_one
+return different values for n and alpha in 1 <= n <= 25 and 
+0 <= a < n.
+"""
 def roots_test():
     valid = []
     for n in range(1, 26):
@@ -59,6 +78,11 @@ def roots_test():
     return finallist
 
 
+"""
+Returns a list indicating the minimum values of n and alpha
+as a counter example for the conjecture { a is odd, gcd(n,a) != 1
+of 1 <= n <= 25 and 0 <= a < n.
+"""
 def minimum_roots_test():
     for n in range(1, 26):
         for a in range(1, n, 2):
@@ -178,5 +202,9 @@ class Testing(unittest.TestCase):
         print(output)
         self.assertEqual(output, [6, 3])
 
+
+"""
+Enables UnitTesting to run when file is called.
+"""
 if __name__ == '__main__':
     unittest.main()
