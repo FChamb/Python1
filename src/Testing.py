@@ -58,6 +58,11 @@ def roots_test():
     return finallist
 
 
+def minimum_roots_test():
+    for n in range(1, 26):
+        for a in range(1, n, 2):
+            if math.
+
 class Testing(unittest.TestCase):
     """
     Intricate Integer Creation
