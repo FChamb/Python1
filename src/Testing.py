@@ -1,3 +1,5 @@
+import math
+
 from IntricateInteger import *
 from IntricateIntegers import *
 import unittest
@@ -61,7 +63,9 @@ def roots_test():
 def minimum_roots_test():
     for n in range(1, 26):
         for a in range(1, n, 2):
-            if math.
+            if math.gcd(n, a) != 1:
+                items = [n, a]
+                return items
 
 class Testing(unittest.TestCase):
     """
