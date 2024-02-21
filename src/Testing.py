@@ -1,8 +1,7 @@
-import math
-
 from IntricateInteger import *
 from IntricateIntegers import *
 import unittest
+import coverage
 
 
 def peculiar_test():
@@ -66,6 +65,7 @@ def minimum_roots_test():
             if math.gcd(n, a) != 1:
                 items = [n, a]
                 return items
+
 
 class Testing(unittest.TestCase):
     """
@@ -164,7 +164,19 @@ class Testing(unittest.TestCase):
     """
     Hard Additional Requirements
     """
-    # Testing Intricate Roots of One
-    def test_intricateRootsOfOne(self):
-        print("Testing Intricate Roots Of One: ")
-        self.assertTrue(roots_test())
+    # Testing Intricate Roots
+    def test_intricateRoots(self):
+        print("Testing Intricate Roots: ")
+        output = roots_test()
+        print(output)
+        self.assertTrue(output)
+
+    # Testing Counter Example for gcd of roots
+    def test_intricateRootsMinimum(self):
+        print("Testing Intricate Roots Minimum Value:")
+        output = minimum_roots_test()
+        print(output)
+        self.assertEqual(output, [6, 3])
+
+if __name__ == '__main__':
+    unittest.main()
