@@ -1,7 +1,7 @@
 from IntricateInteger import *
 from IntricateIntegers import *
 import unittest
-import coverage
+from timeit import default_timer as timer
 
 
 """
@@ -86,7 +86,7 @@ of 1 <= n <= 25 and 0 <= a < n.
 def minimum_roots_test():
     for n in range(1, 26):
         for a in range(1, n, 2):
-            if math.gcd(n, a) != 1:
+            if math.gcd(n, a) != 1 and intricate_roots_of_one(n, a) != 1:
                 items = [n, a]
                 return items
 
