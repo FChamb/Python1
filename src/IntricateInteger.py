@@ -26,7 +26,6 @@ n - the modules of the IntricateInteger
 alpha - the multiplier of the IntricateInteger
 """
 def multiply_sublists(combs, n, alpha):
-    print("Running multiply_sublists")
     span_list = []
     for sublist in combs:
         if len(sublist) == 1:
@@ -38,7 +37,6 @@ def multiply_sublists(combs, n, alpha):
             for i in sublist:
                 ele = IntricateInteger(i, n, alpha)
                 product = product*ele
-            print("Product: ", product.object)
             span_list.append(product.object)
     return set(span_list)
 
@@ -64,10 +62,8 @@ element.
 set1, set2 - the sets to be compared
 """
 def are_sets_equal(set1, set2):
-    print("Running are sets equal")
     set1_vals = {i for i in get_set_vals(set1)}
     set2_vals = {i for i in get_set_vals(set2)}
-    print(set1_vals == set2_vals)
     return set1_vals == set2_vals
 
 
@@ -84,21 +80,12 @@ to be combined
 """
 def get_power_combinations(int_set, n, alpha):
     val_set = get_set_vals(int_set)
-    print("running!")
     combs = [] #list of possible product 'factors'
-    print(len(int_set), "\n")
     for i in range (1, len(val_set) + 1):
-        print("In loop")
-        #get all combinations of a certain length
-        combs.extend(itertools.combinations(val_set, i))
-        print(len(combs))
-    print("Escaped the loop")
+        combs.extend(itertools.combinations(val_set, i)) #get all combinations of a certain length
     neat_set = multiply_sublists(combs, n, alpha)
-    print("Int set: ", get_set_vals(int_set))
-    print("Neat set: ", get_set_vals(neat_set))
     if are_sets_equal(val_set, neat_set):
-        #no new products added, return set
-        return neat_set
+        return neat_set #no new products added, return set
     else:
         return get_power_combinations(neat_set, n, alpha)
 
@@ -227,10 +214,3 @@ class IntricateInteger:
             return result 
         else:
             raise Exception("Incompatible intricate integers!")
-
-#test stuff to be removed!!!
-x = IntricateInteger(1, 20, 5)
-y = IntricateInteger(2, 20, 5)
-z = IntricateInteger(3, 20, 5)
-test_set = {x, y, z}
-print(get_power_combinations(test_set, 20, 5))

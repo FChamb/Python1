@@ -205,6 +205,18 @@ class Testing(unittest.TestCase):
         print(output)
         self.assertEqual(output, [6, 3])
 
+    """
+    Very Hard Additional Requirements
+    """
+    def test_generatorSpanAlgorithm(self):
+            print("Testing Generator Span Algorithm:")
+            x = IntricateInteger(1, 6, 5)
+            y = IntricateInteger(2, 6, 5)
+            z = IntricateInteger(3, 6, 5)
+            test_set = {x, y, z}
+            output = get_power_combinations(test_set, 6, 5)
+            print(output)
+            self.assertEqual(output, {1, 2, 3, 5})
 
 """
 Enables UnitTesting to run when file is called.
