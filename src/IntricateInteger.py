@@ -190,14 +190,14 @@ class IntricateInteger:
     """
     def __mul__(self, other):   
         if self.n == other.n and self.alpha == other.alpha:
-            if (a, b) in self.memo: #check if result is memoized
-                return self.memo[(a, b)]
+            if (self.object, other.object) in self.memo: #check if result is memoized
+                return self.memo[(self.object, other.object)]
     
             result = IntricateInteger((self.object 
                                         + other.object
                                         + self.alpha * math.lcm(self.object, other.object))
                                         % self.n, self.n, self.alpha) #calculate intricate multiplication
-            self.memo[(a, b)] = result #memoize result
+            self.memo[(self.object, other.object)] = result #memoize result
             return result 
         else:
             raise Exception("Incompatible intricate integers!")
