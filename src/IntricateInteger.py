@@ -94,11 +94,25 @@ n - the modules of the IntricateInteger
 alpha - the multiplier of the IntricateInteger
 """
 def has_commutative_intricate_multiplication(n, alpha):
+    found = {}
     for x in range(0, n):
         for y in range(0, n):
+            x = 0
+            y = 0
             a = IntricateInteger(x, n, alpha)
             b = IntricateInteger(y, n, alpha)
-            if (a * b).object != (b * a).object:
+            key = (a.object, b.object)
+            key2 = (b.object, a.object)
+            if key in found:
+                x = found.get(key)
+            if key2 in found:
+                y = found.get(key2)
+            if x == 0 or y == 0:
+                x = (a * b).object
+                y = (b * a).object
+                found[key] = x
+                found[key2] = y
+            if x != y:
                 return False
     return True
 
