@@ -152,7 +152,10 @@ class Testing(unittest.TestCase):
         print("Testing Multiplication Using Different Values of N and Alpha")
         x = IntricateInteger(3, 7, 2)
         y = IntricateInteger(5, 8, 3)
-        self.assertRaises(Exception, IntricateInteger, x, y)
+        ##self.assertRaises(Exception, IntricateInteger, x, y)
+        with self.assertRaises(Exception) as context:
+            x * y
+            self.assertTrue("Incompatible intricate integers!" in context.exception)
 
     """
     Easy Additional Requirements
