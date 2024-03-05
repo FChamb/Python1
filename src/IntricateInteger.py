@@ -1,4 +1,5 @@
 import math
+import itertools
 
 """
 Returns a boolean indicating whether (x * x) = x
@@ -13,6 +14,76 @@ def has_intricate_peculiar_property(n, alpha):
         if (a * a).object != a.object:
             return False
     return True
+
+
+"""
+Helper function for get_power_combinations.
+Takes a list of sublists and multiplies every
+element, adding results to a set which eventually 
+contains the span of the original generators.
+combs - the list of sublists of combinations
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
+def multiply_sublists(combs, n, alpha):
+    span_list = []
+    for sublist in combs:
+        if len(sublist) == 1:
+            span_list.append(sublist[0])
+            span_list.append(sublist[0]*sublist[0])
+        else:
+            product = IntricateInteger(0, n, alpha)
+            for i in sublist:
+                product = product*i
+            span_list.append(product)
+    return set(span_list)
+
+
+"""
+Method to return a nicer looking version of a set of
+IntricateIntegers, showing only their object values.
+set1 - the set of IntricateIntegers to be manipulated
+"""
+def get_set_vals(set1):
+    set1_vals = {i.object for i in set1}
+    return set1_vals
+
+
+"""
+Helper method for get_power_combinations,
+returns true if two sets of IntricateIntegers are
+equal by comparing the object attributes of each
+element.
+set1, set2 - the sets to be compared
+"""
+def are_sets_equal(set1, set2):
+    set1_vals = {i.object for i in set1}
+    set2_vals = {i.object for i in set2}
+    return set1_vals == set2_vals
+
+
+"""
+Returns the span of a given set of IntricateIntegers,
+for a given (n, alpha) by recursively finding all 
+combinations of set elements and their products.
+Stops when no new products have been found in
+a pass.
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+int_set - the set of generators (and eventually products)
+to be combined
+"""
+def get_power_combinations(int_set, n, alpha):
+    combs = [] #list of possible product 'factors'
+    for i in range (1, len(int_set) + 1):
+        #get all combinations of a certain length
+        combs.extend(itertools.combinations(int_set, i))
+    neat_set = multiply_sublists(combs, n, alpha)
+    if are_sets_equal(int_set, neat_set):
+        #no new products added, return set
+        return get_set_vals(neat_set)
+    else:
+        return get_power_combinations(neat_set, n, alpha)
 
 
 """
