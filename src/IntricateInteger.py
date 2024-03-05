@@ -26,6 +26,7 @@ n - the modules of the IntricateInteger
 alpha - the multiplier of the IntricateInteger
 """
 def multiply_sublists(combs, n, alpha):
+    print("Running multiply_sublists")
     span_list = []
     for sublist in combs:
         if len(sublist) == 1:
@@ -46,7 +47,7 @@ set1 - the set of IntricateIntegers to be manipulated
 """
 def get_set_vals(set1):
     set1_vals = {i.object for i in set1}
-    return set1_vals
+    return set(set1_vals)
 
 
 """
@@ -57,8 +58,10 @@ element.
 set1, set2 - the sets to be compared
 """
 def are_sets_equal(set1, set2):
-    set1_vals = {i.object for i in set1}
-    set2_vals = {i.object for i in set2}
+    print("Running are sets equal")
+    set1_vals = {i for i in get_set_vals(set1)}
+    set2_vals = {i for i in get_set_vals(set2)}
+    print(set1_vals == set2_vals)
     return set1_vals == set2_vals
 
 
@@ -74,11 +77,18 @@ int_set - the set of generators (and eventually products)
 to be combined
 """
 def get_power_combinations(int_set, n, alpha):
+    int_set = set(int_set)
+    print("running!")
     combs = [] #list of possible product 'factors'
+    print(len(int_set), "\n")
     for i in range (1, len(int_set) + 1):
+        print("In loop")
         #get all combinations of a certain length
         combs.extend(itertools.combinations(int_set, i))
+    print("Escaped the loop")
     neat_set = multiply_sublists(combs, n, alpha)
+    print(get_set_vals(int_set))
+    print(get_set_vals(neat_set))
     if are_sets_equal(int_set, neat_set):
         #no new products added, return set
         return get_set_vals(neat_set)
@@ -195,3 +205,10 @@ class IntricateInteger:
                                     % self.n, self.n, self.alpha)
         else:
             raise Exception("Incompatible intricate integers!")
+
+#test stuff to be removed!!!
+x = IntricateInteger(1, 8, 1)
+y = IntricateInteger(4, 8, 1)
+z = IntricateInteger(3, 8, 1)
+test_set = {x, y, z}
+print(get_power_combinations(test_set, 8, 1))
