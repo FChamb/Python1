@@ -103,6 +103,7 @@ class IntricateInteger:
             self.object = obj
         self.n = n
         self.alpha = alpha
+        self.memo = {} #implementing memoisation for efficiency purposes
 
     """
     Returns a string value of the IntricateInteger object.
@@ -116,11 +117,26 @@ class IntricateInteger:
     two provided IntricateInteger objects are equal.
     other - the other IntricateInteger object to be multiplied
     """
-    def __mul__(self, other):
+    def __mul__(self, other):   
         if self.n == other.n and self.alpha == other.alpha:
-            return IntricateInteger((self.object
-                                     + other.object
-                                     + self.alpha * math.lcm(self.object, other.object))
-                                    % self.n, self.n, self.alpha)
+            if (a, b) in self.memo: #check if result is memoized
+                return self.memo[(a, b)]
+    
+            result = IntricateInteger((self.object 
+                                        + other.object
+                                        + self.alpha * math.lcm(self.object, other.object))
+                                        % self.n, self.n, self.alpha) #calculate intricate multiplication
+            self.memo[(a, b)] = result #memoize result
+            return result 
+        else:
+            raise Exception("Incompatible intricate integers!")
+
+     def __mul2__(self, other): #compare timing improvement with memoisation
+        if self.n == other.n and self.alpha == other.alpha:
+            result = IntricateInteger((self.object
+                                        + other.object
+                                        + self.alpha * math.lcm(self.object, other.object))
+                                        % self.n, self.n, self.alpha) #calculate intricate multiplication
+            return result 
         else:
             raise Exception("Incompatible intricate integers!")
