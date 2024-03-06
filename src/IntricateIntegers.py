@@ -1,6 +1,50 @@
 from IntricateInteger import IntricateInteger
 
 
+"""
+Returns a boolean indicating whether (x * x) = x
+for a given (n, alpha). If so the Intricate Peculiar
+Property holds true for all x in Zn. This is for iterative.
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
+def has_intricate_peculiar_property_iterative(n, alpha):
+    for x in IntricateIntegersIterator(IntricateIntegers(n, alpha)):
+        if (x * x).object != x.object:
+            return False
+    return True
+
+
+"""
+Returns a boolean indicating whether (x * y) = (y * x)
+for a given (n, alpha). If so the Commutative Intricate
+Multiplication holds true for all x in Zn. This is for iterative.
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
+def has_commutative_intricate_multiplication_iterative(n, alpha):
+    for x in IntricateIntegersIterator(IntricateIntegers(n, alpha)):
+        for y in IntricateIntegersIterator(IntricateIntegers(n, alpha)):
+            if (x * y).object != (y * x).object:
+                return False
+    return True
+
+
+"""
+Returns a list of all x in Zn for which (x * y) * z = x * (y * z)
+for a given (n, alpha). This is for iterative.
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
+def has_associative_intricate_multiplication_iterative(n, alpha):
+    for x in IntricateIntegersIterator(IntricateIntegers(n, alpha)):
+        for y in IntricateIntegersIterator(IntricateIntegers(n, alpha)):
+            for z in IntricateIntegersIterator(IntricateIntegers(n, alpha)):
+                if ((x * y) * z).object != (x * (y * z)).object:
+                    return False
+    return True
+
+
 class IntricateIntegers:
     """
     Constructor method for a new IntricateIntegers object.

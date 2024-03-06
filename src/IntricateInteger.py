@@ -1,7 +1,5 @@
 import math
 import itertools
-from IntricateIntegers import IntricateIntegers
-from IntricateIntegers import IntricateIntegersIterator
 
 """
 Returns a boolean indicating whether (x * x) = x
@@ -14,20 +12,6 @@ def has_intricate_peculiar_property(n, alpha):
     for x in range(0, n):
         a = IntricateInteger(x, n, alpha)
         if (a * a).object != a.object:
-            return False
-    return True
-
-
-"""
-Returns a boolean indicating whether (x * x) = x
-for a given (n, alpha). If so the Intricate Peculiar
-Property holds true for all x in Zn. This is for iterative.
-n - the modules of the IntricateInteger
-alpha - the multiplier of the IntricateInteger
-"""
-def has_intricate_peculiar_property_iterative(n, alpha):
-    for x in IntricateIntegersIterator(IntricateIntegers(n, alpha)):
-        if (x * x).object != x.object:
             return False
     return True
 
