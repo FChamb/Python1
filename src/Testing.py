@@ -279,7 +279,7 @@ class Testing(unittest.TestCase):
         commutative_iterative_test()
         end1 = timer()
         print("Iterative Tests Completed in", end1 - start1)
-        print("Difference in tests", (end1 - start1) - (end - start))
+        print("Difference in tests", (end - start) - (end1 - start1))
 
     # Testing Difference in time Between Associative Regular and Iterative
     def test_differenceAssociative(self):
@@ -292,7 +292,7 @@ class Testing(unittest.TestCase):
         associative_iterative_test()
         end1 = timer()
         print("Iterative Tests Completed in", end1 - start1)
-        print("Difference in tests", (end1 - start1) - (end - start))
+        print("Difference in tests", (end - start) - (end1 - start1))
 
     # Testing Associative Property for IntricateIntegersIterator
     def test_IntricateIntegersIteratorAssociative(self):

@@ -8,7 +8,8 @@
 1. Open the terminal and cd into the src of the project directory
 2. Type 'python3' into the command line
 3. Type 'from IntricateInteger import *' into the python interpreter to load all the functions
-4. Begin working with Intricate Integers (See Examples Below for Suggestions)
+4. Type 'from Testing import *' into the pyhton interpreter to load all the testing functions
+5. Begin working with Intricate Integers (See Examples Below for Suggestions)
 
 ##### Run Automated Tests via Command Line
 1. Open the terminal and cd into the src of the project directory
@@ -17,12 +18,18 @@
 
 ## Examples to Copy & Paste:
 **1. From the Specification**<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x=IntricateInteger(3,7,2)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;y=IntricateInteger(5,7,2)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;print(x)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;print(y)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;print(x*x)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;print(x*y)
+&nbsp;&nbsp;&nbsp;&nbsp;>> x=IntricateInteger(3,7,2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> y=IntricateInteger(5,7,2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> print(x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> print(y)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> print(x*x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> print(x*y)
+
+**2. Unit Tests to Run**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> peculiar_test()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> peculiar_iterative_test()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> roots_test()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>> minimum_roots_test()
 
 ## How to Run Coverage Test Check:
 1. Open the terminal and cd into the src of the project directory
