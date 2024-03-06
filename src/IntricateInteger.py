@@ -17,79 +17,6 @@ def has_intricate_peculiar_property(n, alpha):
 
 
 """
-Helper function for get_power_combinations.
-Takes a list of sublists and multiplies every
-element, adding results to a set which eventually 
-contains the span of the original generators.
-combs - the list of sublists of combinations
-n - the modules of the IntricateInteger
-alpha - the multiplier of the IntricateInteger
-"""
-def multiply_sublists(combs, n, alpha):
-    span_list = []
-    for sublist in combs:
-        if len(sublist) == 1:
-            ele = IntricateInteger(sublist[0], n, alpha)
-            span_list.append(ele.object)
-            span_list.append((ele*ele).object)
-        else:
-            product = IntricateInteger(0, n, alpha)
-            for i in sublist:
-                ele = IntricateInteger(i, n, alpha)
-                product = product*ele
-            span_list.append(product.object)
-    return set(span_list)
-
-
-"""
-Method to return a nicer looking version of a set of
-IntricateIntegers, showing only their object values.
-set1 - the set of IntricateIntegers to be manipulated
-"""
-def get_set_vals(set1):
-    list1 = list(set1)
-    if isinstance(list1[0], int):
-        return set1
-    set1_vals = {i.object for i in set1}
-    return set(set1_vals) #iterate through all and if not int, get .object
-    
-
-"""
-Helper method for get_power_combinations,
-returns true if two sets of IntricateIntegers are
-equal by comparing the object attributes of each
-element.
-set1, set2 - the sets to be compared
-"""
-def are_sets_equal(set1, set2):
-    set1_vals = {i for i in get_set_vals(set1)}
-    set2_vals = {i for i in get_set_vals(set2)}
-    return set1_vals == set2_vals
-
-
-"""
-Returns the span of a given set of IntricateIntegers,
-for a given (n, alpha) by recursively finding all 
-combinations of set elements and their products.
-Stops when no new products have been found in
-a pass.
-n - the modules of the IntricateInteger
-alpha - the multiplier of the IntricateInteger
-int_set - the set of generators (and eventually products)
-to be combined
-"""
-def get_power_combinations(int_set, n, alpha):
-    val_set = get_set_vals(int_set)
-    combs = [] #list of possible product 'factors'
-    for i in range (1, len(val_set) + 1):
-        combs.extend(itertools.combinations(val_set, i)) #get all combinations of a certain length
-    neat_set = multiply_sublists(combs, n, alpha)
-    if are_sets_equal(val_set, neat_set):
-        return neat_set #no new products added, return set
-    else:
-        return get_power_combinations(neat_set, n, alpha)
-
-"""
 Returns a boolean indicating whether (x * y) = (y * x)
 for a given (n, alpha). If so the Commutative Intricate
 Multiplication holds true for all x in Zn.
@@ -151,6 +78,80 @@ def intricate_roots_of_one(n, alpha):
         if (a * a).object == 1:
             valid.append(x)
     return valid
+
+
+"""
+Helper function for get_power_combinations.
+Takes a list of sublists and multiplies every
+element, adding results to a set which eventually 
+contains the span of the original generators.
+combs - the list of sublists of combinations
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+"""
+def multiply_sublists(combs, n, alpha):
+    span_list = []
+    for sublist in combs:
+        if len(sublist) == 1:
+            ele = IntricateInteger(sublist[0], n, alpha)
+            span_list.append(ele.object)
+            span_list.append((ele * ele).object)
+        else:
+            product = IntricateInteger(0, n, alpha)
+            for i in sublist:
+                ele = IntricateInteger(i, n, alpha)
+                product = product * ele
+            span_list.append(product.object)
+    return set(span_list)
+
+
+"""
+Method to return a nicer looking version of a set of
+IntricateIntegers, showing only their object values.
+set1 - the set of IntricateIntegers to be manipulated
+"""
+def get_set_vals(set1):
+    list1 = list(set1)
+    if isinstance(list1[0], int):
+        return set1
+    set1_vals = {i.object for i in set1}
+    return set(set1_vals)  # iterate through all and if not int, get .object
+
+
+"""
+Helper method for get_power_combinations,
+returns true if two sets of IntricateIntegers are
+equal by comparing the object attributes of each
+element.
+set1, set2 - the sets to be compared
+"""
+def are_sets_equal(set1, set2):
+    set1_vals = {i for i in get_set_vals(set1)}
+    set2_vals = {i for i in get_set_vals(set2)}
+    return set1_vals == set2_vals
+
+
+"""
+Returns the span of a given set of IntricateIntegers,
+for a given (n, alpha) by recursively finding all 
+combinations of set elements and their products.
+Stops when no new products have been found in
+a pass.
+n - the modules of the IntricateInteger
+alpha - the multiplier of the IntricateInteger
+int_set - the set of generators (and eventually products)
+to be combined
+"""
+def get_power_combinations(int_set, n, alpha):
+    val_set = get_set_vals(int_set)
+    combs = []  # list of possible product 'factors'
+    for i in range(1, len(val_set) + 1):
+        combs.extend(itertools.combinations(val_set, i))  # get all combinations of a certain length
+    neat_set = multiply_sublists(combs, n, alpha)
+    if are_sets_equal(val_set, neat_set):
+        return neat_set  # no new products added, return set
+    else:
+        return get_power_combinations(neat_set, n, alpha)
 
 
 class IntricateInteger:

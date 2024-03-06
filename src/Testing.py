@@ -218,6 +218,7 @@ class Testing(unittest.TestCase):
             print(output)
             self.assertEqual(output, {1, 2, 3, 5})
 
+
 """
 Enables UnitTesting to run when file is called.
 """
