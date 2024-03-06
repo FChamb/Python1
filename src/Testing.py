@@ -188,6 +188,11 @@ class Testing(unittest.TestCase):
         valid = ["<0 mod 3 | 2 >", "<1 mod 3 | 2 >", "<2 mod 3 | 2 >"]
         self.assertTrue(out, valid)
 
+    # Testing Peculiar Property for IntricateIntegersIterator
+    def test_IntricateIntegersIteratorPeculiar(self):
+        print("Testing Peculiar Iterator: ")
+        self.assertTrue()
+
     """
     Hard Additional Requirements
     """
